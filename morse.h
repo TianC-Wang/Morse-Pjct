@@ -4,9 +4,10 @@
 #ifndef M_TIMEUNIT
 #define M_TIMEUNIT  200
 #endif
+#define M           (M_TIMEUNIT/10.0f)
 #define M_          M_TIMEUNIT
-#define M__         M_TIMEUNIT*3
-#define M___        M_TIMEUNIT*7
+#define M__         (M_TIMEUNIT*3)
+#define M___        (M_TIMEUNIT*7)
 #pragma endregion
 #pragma region RawCode
 #define MM      0b00000000 //null
@@ -72,7 +73,7 @@ public:
     MorseSender(int port, bool reversed = false) : DOPort(port, reversed) {}
     void set(bool HoL)
     {
-      digitalWrite(port, HoL ^ reversed);
+        digitalWrite(port, HoL ^ reversed);
     }
     void set(int length)
     {
@@ -85,7 +86,7 @@ public:
         int translator = rawCode;
         if(translator == 0)
         {
-          delay(M__);
+            delay(M__);
         }
         for(int i = 0; i < 8; i++)
         {
@@ -193,7 +194,7 @@ public:
         }
     }
     template<typename T>
-    MorseSender operator<<(T object)
+    MorseSender operator<<(T object) //template support
     {
         send(object);
         return *this;
@@ -201,10 +202,45 @@ public:
 };
 class MorseRecver : public DIPort
 {
+private:
+    bool OutOfTouch(void)
+    {
+        unsigned int counter = 0;
+        while(counter < M)
+        {
+            if(get())
+            {
+                return false;
+            }
+            counter++;
+            delay(1);
+        }
+        return true;
+    }
+
 public:
     MorseRecver(int port, bool reversed = false) : DIPort(port, reversed) {}
     bool get(void)
     {
         return digitalRead(port) ^ reversed;
+    }
+    void get(char* buffer)
+    {
+        char& temp = *buffer;
+        get(temp);
+    }
+    void get(char& buffer)
+    {
+        unsigned int counter = 0;
+        while(!get()) {}
+        while(get())
+        {
+            if(!get())
+            {
+                
+            }
+            counter++;
+            delay(1);
+        }
     }
 };
