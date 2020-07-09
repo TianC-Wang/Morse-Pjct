@@ -13,11 +13,11 @@ public:
         this->port = port;
     }
 };
-class DPort : public Port
+class ADPort : public Port
 {
 protected:
     bool reversed;
-    DPort(int port, bool reversed) : Port(port) { this->reversed = reversed; }
+    ADPort(int port, bool reversed) : Port(port) { this->reversed = reversed; }
 
 public:
     void setReverse(bool reversed)
@@ -25,19 +25,7 @@ public:
         this->reversed = reversed;
     }
 };
-class APort : public Port
-{
-protected:
-    bool reversed;
-    APort(int port, bool reversed) : Port(port) { this->reversed = reversed; }
-
-public:
-    void setReverse(bool reversed)
-    {
-        this->reversed = reversed;
-    }
-};
-class DIPort : public DPort
+class DIPort : public ADPort
 {
 public:
     DIPort(int port, bool reversed = false) : DPort(port, reversed) { pinMode(port, INPUT); }
@@ -51,7 +39,7 @@ public:
         pinMode(port, INPUT);
     }
 };
-class DOPort : public DPort
+class DOPort : public ADPort
 {
 public:
     DOPort(int port, bool reversed = false) : DPort(port, reversed) { pinMode(port, OUTPUT); }
@@ -65,7 +53,7 @@ public:
         pinMode(port, OUTPUT);
     }
 };
-class AIPort : public APort
+class AIPort : public ADPort
 {
 public:
     AIPort(int port, bool reversed = false) : APort(port, reversed) { pinMode(port, INPUT); }
@@ -75,14 +63,7 @@ public:
         temp = analogRead(port);
         if (reversed)
         {
-            if (temp > 127)
-            {
-                return 255 - temp;
-            }
-            else
-            {
-                return temp + 128;
-            }
+            return 255 - temp;
         }
         else
         {
@@ -95,7 +76,7 @@ public:
         pinMode(port, INPUT);
     }
 };
-class AOPort : public APort
+class AOPort : public ADPort
 {
 public:
     AOPort(int port, bool reversed = false) : APort(port, reversed) { pinMode(port, OUTPUT); }
@@ -103,14 +84,7 @@ public:
     {
         if (reversed)
         {
-            if (Lvl > 127)
-            {
-                analogWrite(port, 255 - Lvl);
-            }
-            else
-            {
-                analogWrite(port, Lvl + 128);
-            }
+            analogWrite(port, 255 - Lvl);
         }
         else
         {
