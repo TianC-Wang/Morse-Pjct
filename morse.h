@@ -203,19 +203,31 @@ public:
 class MorseRecver : public DIPort
 {
 private:
-    bool OutOfTouch(void)
+    bool currentStaticStatus(int length)
     {
+        bool status = false;
         unsigned int counter = 0;
-        while(counter < M)
+        while(counter < length)
         {
             if(get())
             {
-                return false;
+                if(!status)
+                {
+                    status = true;
+                    counter = 0;
+                }
+            }
+            else
+            {
+                if(status)
+                {
+                    status = false;
+                    counter = 0;
+                }
             }
             counter++;
-            delay(1);
         }
-        return true;
+        return status;
     }
 
 public:
@@ -232,15 +244,57 @@ public:
     void get(char& buffer)
     {
         unsigned int counter = 0;
-        while(!get()) {}
-        while(get())
+        while(!get())
         {
-            if(!get())
+            if(counter >= M__)
             {
-                
+                buffer = 0;
+                return;
             }
             counter++;
-            delay(1);
+        }
+        buffer = 1;
+        for(int i = 0; i < 7; i++)
+        {
+            counter = 0;
+            while(counter < M__)
+            {
+                if(get())
+                {
+                    if(currentStaticStatus(M))
+                    {
+                        break;
+                    }
+                }
+                counter++;
+                delay(1);
+            }
+            if(counter == M__)
+            {
+                return;
+            }
+            counter = 0;
+            while(get())
+            {
+                if(!get())
+                {
+                    if(!currentStaticStatus(M))
+                    {
+                        break;
+                    }
+                }
+                counter++;
+                delay(1);
+            }
+            if(counter == 0)
+            {
+                return;
+            }
+            buffer <<= 1;
+            if(counter > M_)
+            {
+                buffer += 1;
+            }
         }
     }
 };
