@@ -252,6 +252,7 @@ public:
                 return;
             }
             counter++;
+            delay(1);
         }
         buffer = 1;
         for(int i = 0; i < 7; i++)
