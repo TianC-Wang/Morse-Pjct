@@ -72,7 +72,7 @@ public:
     MorseSender(int port, bool reversed = false) : DOPort(port, reversed) {}
     void set(bool HoL)
     {
-      digitalWrite(port, HoL ^ reversed);
+        digitalWrite(port, HoL ^ reversed);
     }
     void set(int length)
     {
