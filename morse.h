@@ -72,7 +72,7 @@ public:
     MorseSender(int port, bool reversed = false) : DOPort(port, reversed) {}
     void set(bool HoL)
     {
-      digitalWrite(port, HoL ^ reversed);
+        digitalWrite(port, HoL ^ reversed);
     }
     void set(int length)
     {
@@ -85,7 +85,7 @@ public:
         int translator = rawCode;
         if(translator == 0)
         {
-          delay(M__);
+            delay(M__);
         }
         for(int i = 0; i < 8; i++)
         {
@@ -193,7 +193,7 @@ public:
         }
     }
     template<typename T>
-    MorseSender operator<<(T object)
+    MorseSender operator<<(T object) //template support
     {
         send(object);
         return *this;
