@@ -8,10 +8,18 @@ void setup(void)
 }
 void loop(void)
 {
+    static unsigned int counter = 0;
     char temp = Serial.read();
     if(temp == EOF || temp == '\0' || temp == '\n')
     {
-        Serial.print(msr->recv());
+        temp = msr->recv();
+        if(counter > 10 && temp == ' ')
+        {
+            Serial.print('\n');
+            counter = 0;
+        }
+        Serial.print(temp);
+        counter++;
     }
     else
     {

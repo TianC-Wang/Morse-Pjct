@@ -246,7 +246,7 @@ public:
         unsigned int counter = 0;
         while(!get())
         {
-            if(counter >= M__)
+            if(counter >= M___)
             {
                 buffer = 0;
                 return;
