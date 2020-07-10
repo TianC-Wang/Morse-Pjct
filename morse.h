@@ -4,7 +4,7 @@
 #ifndef M_TIMEUNIT
 #define M_TIMEUNIT  200
 #endif
-#define M           (M_TIMEUNIT/10.0f)
+#define M           (M_TIMEUNIT/5.0f)
 #define M_          M_TIMEUNIT
 #define M__         (M_TIMEUNIT*3)
 #define M___        (M_TIMEUNIT*7)
