@@ -7,7 +7,5 @@ void setup(void)
 }
 void loop(void)
 {
-    char temp = 0;
-    msr1->get(temp);
-    Serial.println((int)temp);
+    Serial.print(msr1->recv());
 }
