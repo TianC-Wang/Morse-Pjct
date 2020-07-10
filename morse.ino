@@ -1,11 +1,21 @@
 #include "morse.h"
 
-MorseRecver* msr1 = new MorseRecver(3, true);
+MorseSender* mss = new MorseSender(4);
+MorseRecver* msr = new MorseRecver(3, true);
 void setup(void)
 {
     Serial.begin(9600);
 }
 void loop(void)
 {
-    Serial.print(msr1->recv());
+    char temp = Serial.read();
+    if(temp == EOF || temp == '\0' || temp == '\n')
+    {
+        Serial.print(msr->recv());
+    }
+    else
+    {
+        mss->send(temp);
+        delay(M__);
+    }
 }
