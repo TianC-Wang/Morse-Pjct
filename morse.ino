@@ -13,7 +13,7 @@ void loop(void)
     if(temp == EOF || temp == '\0' || temp == '\n')
     {
         temp = msr->recv();
-        if(counter > 10 && temp == ' ')
+        if(counter > 30 && temp == ' ')
         {
             Serial.print('\n');
             counter = 0;
