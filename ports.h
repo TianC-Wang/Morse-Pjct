@@ -61,14 +61,7 @@ public:
     {
         int temp;
         temp = analogRead(port);
-        if (reversed)
-        {
-            return 255 - temp;
-        }
-        else
-        {
-            return temp;
-        }
+        return reversed ? 255 - temp : temp;
     }
     void setPort(int port)
     {
@@ -82,14 +75,7 @@ public:
     AOPort(int port, bool reversed = false) : ADPort(port, reversed) { pinMode(port, OUTPUT); }
     void set(int Lvl)
     {
-        if (reversed)
-        {
-            analogWrite(port, 255 - Lvl);
-        }
-        else
-        {
-            analogWrite(port, Lvl);
-        }
+        analogWrite(port, reversed ? 255 - Lvl : Lvl);
     }
     void setPort(int port)
     {
