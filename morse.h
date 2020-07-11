@@ -203,7 +203,7 @@ public:
 class MorseRecver : public DIPort
 {
 private:
-    bool currentStaticStatus(int length)
+    bool currentStaticStatus(int length) //get the status when it get static
     {
         bool status = false;
         unsigned int counter = 0;
@@ -236,12 +236,12 @@ public:
     {
         return digitalRead(port) ^ reversed;
     }
-    void get(int* buffer)
+    void get(int* buffer) //get RawCode
     {
         int& temp = *buffer;
         get(temp);
     }
-    void get(int& buffer)
+    void get(int& buffer) //get RawCode
     {
         unsigned int counter = 0;
         while(!get())
@@ -298,7 +298,7 @@ public:
             }
         }
     }
-    char recv(void)
+    char recv(void) //return the next received character
     {
         int temp = 0;
         get(temp);
@@ -361,15 +361,15 @@ public:
             default:    return ' ';
         }
     }
-    void recv(char& buffer)
+    void recv(char& buffer) //get the next received character
     {
         buffer = recv();
     }
-    void recv(char* buffer)
+    void recv(char* buffer) //get the next received character
     {
         *buffer = recv();
     }
-    void recv(char* buffer, int maxLength)
+    void recv(char* buffer, int maxLength) //get the next received string(length depends on the second parameter)
     {
         for(int i = 0; i < maxLength; i++)
         {
@@ -378,7 +378,7 @@ public:
         }
     }
     template<typename T>
-    MorseRecver operator>>(T object)
+    MorseRecver operator>>(T object) //template support
     {
         recv(object);
         return *this;
