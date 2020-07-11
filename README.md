@@ -13,7 +13,7 @@ Current project have been partly completed, but bugs may be still existing, you 
 ### Current Progress:
 > - Basic functions finished.  
 > - Adding analog ports support.
-
+***
 ### Current Classes & Functions
 #### In *"ports.h"*:
 - DIPort **: The class for Digital Input port.**  
