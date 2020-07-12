@@ -1,7 +1,7 @@
 #include "morse.h"
 
-MorseSender* mss = new MorseSender(4);
-MorseRecver* msr = new MorseRecver(3);
+Morse::Digital::MorseSender* mss = new Morse::Digital::MorseSender(4);
+Morse::Digital::MorseRecver* msr = new Morse::Digital::MorseRecver(3);
 void setup(void)
 {
     Serial.begin(9600);
