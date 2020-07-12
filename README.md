@@ -46,7 +46,7 @@ Current project have been partly completed, but bugs may be still existing, you 
   - #define M_0 **~** #define M_9 **: The RawCode of '0' ~ '9'.**
   - #define M_A **~** #define M_Z **: The RawCode of 'A' ~ 'Z'.**
   - #define M__A **~** #define M__R **: The RawCode of punctuations.**
-- namespace Morse **: NameSpace of this whole header.**
+- namespace Morse **: Namespace of this whole header.**
   - namespace Digital **: Based on Digital ports.**
     - MorseSender **: The class for a Digital Output port, to work as a Morse code sender.**
       - MorseSender(int port, bool reversed = false) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instance. *reversed*: Set whether the output of this instance should be inverted.**
