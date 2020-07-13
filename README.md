@@ -70,3 +70,5 @@ Current project have been partly completed, but bugs may be still existing, you 
       - void recv(char\* buffer) **: Get the received character or punctuation. *buffer*: The pointer points where to put the character or punctuation.**
       - void recv(char\* buffer, int maxLength) **: Get the received characters or punctuations. *buffer*: The pointer points the start of where to put the characters or punctuations. *maxLength*: The length the function should put once.**
       - operator>> **The same as the functions *recv()*.**
+  - namespace Analog **: Based on Analog ports.**
+    - ***Constructing.***
