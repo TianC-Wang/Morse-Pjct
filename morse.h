@@ -74,9 +74,9 @@ namespace Morse
         {
         public:
             MorseSender(int port, bool reversed = false) : Ports::DOPort(port, reversed) {}
-            void set(bool HoL)
+            void set(bool Hol)
             {
-                digitalWrite(port, HoL ^ reversed);
+                digitalWrite(port, Hol ^ reversed);
             }
             void set(int length) //turn on for length(in msec) and then turn off
             {
@@ -562,10 +562,10 @@ namespace Morse
             }
 
         public:
-            MorseRecver(int port, bool reversed = false, int defaultLvl = 255) : Ports::AIPort(port, reversed) { this->defaultLvl = defaultLvl; }
+            MorseRecver(int port, bool reversed = false, int defaultLvl = 511) : Ports::AIPort(port, reversed) { this->defaultLvl = defaultLvl; }
             bool get(void)
             {
-                return reversed ? analogRead(port) <= 255 - defaultLvl : analogRead(port) >= defaultLvl;
+                return reversed ? (analogRead(port) <= 255 - defaultLvl) : (analogRead(port) >= defaultLvl);
             }
             void get(int* buffer) //get RawCode
             {
