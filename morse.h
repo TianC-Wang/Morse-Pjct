@@ -565,7 +565,7 @@ namespace Morse
             MorseRecver(int port, bool reversed = false, int defaultLvl = 255) : Ports::AIPort(port, reversed) { this->defaultLvl = defaultLvl; }
             bool get(void)
             {
-                return reversed ? analogRead <= 255 - defaultLvl : analogRead(port) >= defaultLvl;
+                return reversed ? analogRead(port) <= 255 - defaultLvl : analogRead(port) >= defaultLvl;
             }
             void get(int* buffer) //get RawCode
             {
