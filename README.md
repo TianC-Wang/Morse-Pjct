@@ -83,7 +83,7 @@ Current project have been partly completed, but bugs may be still existing, you 
       - operator<< **The same as the functions *send()*.**
       - void setLvl(int Lvl) **: Set the analog value used for output. *Lvl*: The value.**
     - MorseRecver **: The class for a Analog Input port, to work as a Morse code receiver.**
-      - MorseRecver(int port, bool reversed = false, int defaultLvl = 255) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instance. *reversed*: Set whether the input of this instance should be inverted. *defaultLvl*: Set the analog value which will be recognized as 'on'.**
+      - MorseRecver(int port, bool reversed = false, int defaultLvl = 511) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instance. *reversed*: Set whether the input of this instance should be inverted. *defaultLvl*: Set the analog value which will be recognized as 'on'.**
       - void setPort(int port) **: Set a port for this instance, will set target port pin mode. *port*: The port index.**
       - void setReverse(bool reversed) **: Set whether the input of this instance should be inverted. *reversed*: Yes or no.**
       - bool get(void) **: Return current value(over the value user set or not) of this instance.**
