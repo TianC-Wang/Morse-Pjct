@@ -1,6 +1,6 @@
 # **Morse Project**
 > - Sender and Receiver  
-> - **Version** 1.1
+> - **Version** 2.0
 
 **This is a project on Arduino, aiming to perform morse code style wireless communication(Li-Fi? maybe).  
 Current project have been partly completed, but bugs may be still existing, you can mail me(thewater2016@qq.com) to report if any happens, that would help a lot, thanks.XD**
