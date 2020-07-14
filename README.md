@@ -59,7 +59,7 @@ Current project have been partly completed, but bugs may be still existing, you 
       - void send(const char* str) **: Send a string, the characters or punctuations which has no Morse code would be seen as space. *str*: The pointer points the first element of the string.**
       - operator<< **The same as the functions *send()*.**
     - MorseRecver **: The class for a Digital Input port, to work as a Morse code receiver.**
-      - MorseRecver(int port, bool reversed = false) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instanc. *reversed*: Set whether the input of this instance should be inverted.**
+      - MorseRecver(int port, bool reversed = false) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instance. *reversed*: Set whether the input of this instance should be inverted.**
       - void setPort(int port) **: Set a port for this instance, will set target port pin mode. *port*: The port index.**
       - void setReverse(bool reversed) **: Set whether the input of this instance should be inverted. *reversed*: Yes or no.**
       - bool get(void) **: Return current value of this instance.**
@@ -71,4 +71,27 @@ Current project have been partly completed, but bugs may be still existing, you 
       - void recv(char\* buffer, int maxLength) **: Get the received characters or punctuations. *buffer*: The pointer points the start of where to put the characters or punctuations. *maxLength*: The length the function should put once.**
       - operator>> **The same as the functions *recv()*.**
   - namespace Analog **: Based on Analog ports.**
-    - ***Constructing.***
+    - MorseSender **: The class for a Analog Output port, to work as a Morse code sender.**
+      - MorseSender(int port, bool reversed = false, int defaultLvl = 255) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instance. *reversed*: Set whether the output of this instance should be inverted. *defaultLvl*: Set the analog value which will be used as 'on'.**
+      - void setPort(int port) **: Set a port for this instance, will set target port pin mode. *port*: The port index.**
+      - void setReverse(bool reversed) **: Set whether the output of this instance should be inverted. *reversed*: Yes or no.**
+      - void set(bool Hol) **: Set the current output of this instance. *Hol*: The value user set or 0, please use true or false.**
+      - void set(int length) **: Set the current output of this instance to the value user set, and 0 after some time. *length*: The length of time(in msec).**
+      - void send(int rawCode) **: Send a set of signal. *rawCode*: The RawCode of the set.**
+      - void send(char ch) **: Send a character or punctuation if it has a Morse code. *ch*: ASC II number of the character or punctuation.**
+      - void send(const char* str) **: Send a string, the characters or punctuations which has no Morse code would be seen as space. *str*: The pointer points the first element of the string.**
+      - operator<< **The same as the functions *send()*.**
+      - void setLvl(int Lvl) **: Set the analog value used for output. *Lvl*: The value.**
+    - MorseRecver **: The class for a Analog Input port, to work as a Morse code receiver.**
+      - MorseRecver(int port, bool reversed = false, int defaultLvl = 255) **: Class constructor, will set target port pin mode. *port*: Set the port index of this instance. *reversed*: Set whether the input of this instance should be inverted. *defaultLvl*: Set the analog value which will be recognized as 'on'.**
+      - void setPort(int port) **: Set a port for this instance, will set target port pin mode. *port*: The port index.**
+      - void setReverse(bool reversed) **: Set whether the input of this instance should be inverted. *reversed*: Yes or no.**
+      - bool get(void) **: Return current value(over the value user set or not) of this instance.**
+      - void get(int\* buffer) **: Get the received RawCode. *buffer*: The pointer points where to put the RawCode.**
+      - void get(int& buffer) **: Get the received RawCode. *buffer*: Where to put the RawCode.**
+      - char recv(void) **: Return the received character or punctuation.**
+      - void recv(char& buffer) **: Get the received character or punctuation. *buffer*: Where to put the character or punctuation.**
+      - void recv(char\* buffer) **: Get the received character or punctuation. *buffer*: The pointer points where to put the character or punctuation.**
+      - void recv(char\* buffer, int maxLength) **: Get the received characters or punctuations. *buffer*: The pointer points the start of where to put the characters or punctuations. *maxLength*: The length the function should put once.**
+      - operator>> **The same as the functions *recv()*.**
+      - void setLvl(int Lvl) **: Set the analog value used for input. *Lvl*: The value.**
