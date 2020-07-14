@@ -399,7 +399,7 @@ namespace Morse
             MorseSender(int port, bool reversed = false, int defaultLvl = 255) : AOPort(port, reversed) { this->defaultLvl = defaultLvl; }
             void set(bool Hol)
             {
-                analogWrite(port, 255 - (Hol ? defaultLvl : 0));
+                analogWrite(port, reversed ? 255 - (Hol ? defaultLvl : 0) : (Hol ? defaultLvl : 0));
             }
             void set(int length)
             {
@@ -565,7 +565,7 @@ namespace Morse
             MorseRecver(int port, bool reversed = false, int defaultLvl = 255) : Ports::AIPort(port, reversed) { this->defaultLvl = defaultLvl; }
             bool get(void)
             {
-                return analogRead(port) >= defaultLvl;
+                return reversed ? analogRead <= 255 - defaultLvl : analogRead(port) >= defaultLvl;
             }
             void get(int* buffer) //get RawCode
             {
