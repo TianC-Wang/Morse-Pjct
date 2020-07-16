@@ -18,8 +18,11 @@ void loop(void)
             Serial.print('\n');
             counter = 0;
         }
-        Serial.print(temp);
-        counter++;
+        else
+        {
+            Serial.print(temp);
+            counter++;
+        }
     }
     else
     {
