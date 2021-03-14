@@ -1,4 +1,4 @@
-<font face="Consolas">
+<font face="Monospace">
 # **Morse Project**
 > - Sender and Receiver  
 > - **Version** 2.2
