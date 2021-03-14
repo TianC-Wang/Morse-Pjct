@@ -1,4 +1,3 @@
-<font face="Monospace">
 # **Morse Project**
 > - Sender and Receiver  
 > - **Version** 2.2
@@ -96,4 +95,3 @@ Current project have been partly completed, but bugs may be still existing, you 
       - void recv(char\* buffer, int maxLength) **: Get the received characters or punctuations. *buffer*: The pointer points the start of where to put the characters or punctuations. *maxLength*: The length the function should put once.**
       - operator>> **The same as the functions *recv()*.**
       - void setLvl(int Lvl) **: Set the analog value used for input. *Lvl*: The value.**
-</font>
